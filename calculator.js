@@ -2,6 +2,7 @@ let answer = document.querySelector(".answer");
 let counterArray = [''];
 let textCalc = "";
 answer.textContent = 0;
+let btn=document.getElementById("dotbtn");
 
 //Reset Button
 function resetButton(){
@@ -60,6 +61,12 @@ function deleteButton()
 
 //Number Buttons
  function numberButton (props){
+   
+    if(props=='.'){
+       
+       btn.disabled=true;
+    }
+    
      
     
      if (props=='.' && counterArray.length==0)
@@ -99,6 +106,10 @@ function deleteButton()
  }
 
  function operationButton (props){
+   
+        btn.disabled=false;
+   
+    console.log(props);
      if (counterArray.length==0 && props!= '-')
      {
          counterArray.push('0');
@@ -136,6 +147,7 @@ function deleteButton()
  //Operation
 
  function equalButton (){
+    btn.disabled=false;
     for (let i=0; i<counterArray.length; i=i+2)
     {
         counterArray[i]=parseFloat(counterArray[i]);
